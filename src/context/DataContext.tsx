@@ -19,8 +19,8 @@ import { createMockWaterQualityDataset } from "../data/mockWaterQuality";
 import { mergeFlowDatasets } from "../data/mergeFlow";
 import { mergeWaterQualityDatasets } from "../data/mergeWaterQuality";
 
-const FLOW_DEFAULT_URL = "/data/Springfield mean daily flow 20-24.xlsx";
-const WQ_DEFAULT_URL = "/data/Springfield raw WQ data 20-25.xlsx";
+const FLOW_DEFAULT_URL = `${import.meta.env.BASE_URL}data/Springfield mean daily flow 20-24.xlsx`;
+const WQ_DEFAULT_URL = `${import.meta.env.BASE_URL}data/Springfield raw WQ data 20-25.xlsx`;
 
 interface DataContextValue {
   loading: boolean;
@@ -71,7 +71,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       flowSource = "default";
     } catch {
       errors.push(
-        "Default flow workbook could not be loaded from public/data; using mock demo flow data instead."
+        "Default flow file was not available; showing demo flow data."
       );
       flowDataset = createMockFlowDataset();
       flowSource = "mock";
@@ -88,7 +88,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       wqSource = "default";
     } catch {
       errors.push(
-        "Default water quality workbook could not be loaded from public/data; using mock demo water quality data instead."
+        "Default water quality file was not available; showing demo WQ data."
       );
       wqDataset = createMockWaterQualityDataset();
       wqSource = "mock";
