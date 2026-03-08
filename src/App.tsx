@@ -1,4 +1,4 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { HomeOverviewPage } from "./pages/HomeOverviewPage";
 import { FlowAnalysisPage } from "./pages/FlowAnalysisPage";
 import { WaterQualityAnalysisPage } from "./pages/WaterQualityAnalysisPage";
@@ -6,7 +6,7 @@ import { ScenarioAnalysisPage } from "./pages/ScenarioAnalysisPage";
 import { DataManagerPage } from "./pages/DataManagerPage";
 
 const navItems = [
-  { to: "/", label: "Overview" },
+  { to: "/overview", label: "Overview" },
   { to: "/flow", label: "Flow analysis" },
   { to: "/water-quality", label: "Water quality" },
   { to: "/scenarios", label: "Scenario analysis" },
@@ -33,7 +33,7 @@ export default function App() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                end={item.to === "/"}
+                end={item.to === "/overview"}
                 className={({ isActive }) =>
                   [
                     "flex items-center rounded-lg px-3 py-2 text-sm font-medium transition",
@@ -60,7 +60,8 @@ export default function App() {
 
           <main className="flex-1">
             <Routes>
-              <Route path="/" element={<HomeOverviewPage />} />
+              <Route path="/" element={<Navigate to="/overview" replace />} />
+              <Route path="/overview" element={<HomeOverviewPage />} />
               <Route path="/flow" element={<FlowAnalysisPage />} />
               <Route path="/water-quality" element={<WaterQualityAnalysisPage />} />
               <Route path="/scenarios" element={<ScenarioAnalysisPage />} />

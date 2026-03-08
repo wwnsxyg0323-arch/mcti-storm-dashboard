@@ -200,8 +200,8 @@ export function DataManagerPage() {
           </div>
 
           {errorMessages.length > 0 && (
-            <div className="rounded-md border border-red-900/60 bg-red-950/60 px-3 py-2 text-xs text-red-200">
-              <p className="font-semibold">Recent parsing messages</p>
+            <div className="rounded-md border border-slate-600/80 bg-slate-800/50 px-3 py-2 text-xs text-slate-300">
+              <p className="font-medium text-slate-200">Data source status</p>
               <ul className="mt-1 list-disc pl-4">
                 {errorMessages.slice(-3).map((msg, idx) => (
                   // eslint-disable-next-line react/no-array-index-key
